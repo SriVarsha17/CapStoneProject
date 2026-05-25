@@ -1,0 +1,124 @@
+//author related api requests
+
+###
+POST http://127.0.0.1:5000/authors/register
+Content-Type: application/json
+
+{
+    "firstName": "pavan",
+    "lastName": "kumar",
+    "email": "pavan@example.com",
+    "profileImage": "https://example.com/authortwo.jpg",
+    "password": "pavan1"
+
+
+}
+
+###
+// author login
+POST http://127.0.0.1:5000/common/login
+Content-Type: application/json
+
+{
+    "email": "pavan@example.com",
+    "password": "pavan"
+}
+
+
+### //post request to create an article by author
+POST http://127.0.0.1:5000/authors/articles
+Content-Type: application/json
+
+{
+    "title": "ARTICLE_3",
+    "category": "Technology",
+    "content": "this article is all about technology......"
+}
+//get articles by author
+###
+GET http://127.0.0.1:5000/authors/articles/698998b6aefc4ed293b10657
+
+### //edit article by author
+PUT http://127.0.0.1:5000/authors/articles/
+Content-Type: application/json
+
+{
+    "articleId": "698996b9dbe6d1865b67f31a",
+    "title": "Updated Article Title",
+    "category": "Updated Category",
+    "content": "This is the updated content of the article."
+}
+
+### //soft delete article by author
+PATCH http://127.0.0.1:5000/authors/articles/698996b9dbe6d1865b67f31a
+Content-Type: application/json
+
+//=================================================================================
+//=================================================================================
+//user related api requests
+
+
+###
+// user register
+POST http://127.0.0.1:5000/users/register
+Content-Type: application/json
+
+{
+    "firstName": "Sanjana",
+    "lastName": "G",
+    "email": "Sanjana@example.com",
+    "profileImage": "https://example.com/usertwo.jpg",
+    "password": "user two"
+}
+
+###
+// user login
+POST http://127.0.0.1:5000/common/login
+Content-Type: application/json
+
+{
+    "email": "Sanjana@example.com",
+    "password": "user two"
+}
+
+###
+// change password (use token from login response or cookie)
+PUT http://127.0.0.1:5000/common/change-password
+Content-Type: application/json
+
+{
+    "currentPassword": "author two",
+    "newPassword": "author-two"
+}
+
+###
+// list all active articles
+GET http://127.0.0.1:5000/users/articles
+
+###
+// add comment to an article
+POST http://127.0.0.1:5000/users/articles/comments
+Content-Type: application/json
+
+{
+    "articleId": "698998d1aefc4ed293b1065a",
+    "userId": "6989adc1bda535a334a61cd6",
+    "comment": "Nice article again !"
+}
+
+
+###
+get http://localhost:5000/test
+
+//=================================================================================
+//=================================================================================
+//admin related api requests
+
+###
+// block author
+PUT http://127.0.0.1:5000/admins/block/698998b6aefc4ed293b10657
+
+###
+// unblock author
+PUT http://127.0.0.1:5000/admins/unblock/698998b6aefc4ed293b10657
+
